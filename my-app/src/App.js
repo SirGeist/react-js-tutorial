@@ -8,21 +8,6 @@ import {useState} from 'react';
 //   imageSize: 90,
 // }
 
-function MyButton(){
-  const [count, setCount] = useState(0);
-
-  function handleClick(){
-    setCount(count + 1);
-  }
-
-  return(
-    <button onClick={handleClick}>
-      Clicked {count} times
-    </button>
-  );
-}
-
-
 
 // const products = [
 //   {title: 'Cabbage', isFruit: false, id:1},
@@ -50,14 +35,29 @@ function MyButton(){
 //   )
 // }
 function App() {
+
+  const [count, setCount] = useState(0);
+
+  function handleClick(){
+    setCount(count + 1);
+  }
   return (
     <>
       <h1>
         Counters that update separately
       </h1>
-      <MyButton/>
-      <MyButton/>
+      <MyButton count = {count} onClick={handleClick}/>
+      <MyButton count = {count} onClick={handleClick}/>
     </>
+  );
+}
+
+function MyButton({count, onClick}){
+
+  return(
+    <button onClick={onClick}>
+      Clicked {count} times
+    </button>
   );
 }
 
